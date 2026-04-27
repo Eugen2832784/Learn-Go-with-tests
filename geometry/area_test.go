@@ -5,18 +5,18 @@ import "testing"
 func TestArea(t *testing.T) {
 
 	areaTests := []struct {
-		shape Shape
-		want  float64
+		shape   Shape
+		HasArea float64
 	}{
-		{Rectangle{12, 6}, 72.0},
-		{Circle{10}, 314.1592653589793},
-		{Triangle{12, 6}, 36.0},
+		{shape: Rectangle{Width: 12, Height: 6}, HasArea: 72.0},
+		{shape: Circle{Radius: 10}, HasArea: 314.1592653589793},
+		{shape: Triangle{Height: 12, Pamats: 6}, HasArea: 36.0},
 	}
 
 	for _, tt := range areaTests {
 		got := tt.shape.Area()
-		if got != tt.want {
-			t.Errorf("got %g want %g", got, tt.want)
+		if got != tt.HasArea {
+			t.Errorf("%#v got %g want %g", tt.shape, got, tt.HasArea)
 		}
 	}
 
